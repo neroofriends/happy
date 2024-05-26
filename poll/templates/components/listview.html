@@ -1,0 +1,94 @@
+{% load static %}
+
+<style type="text/css">
+	.tap{
+		background: #fff;
+		border-radius: .3rem;
+		border: .5rem solid #fff;
+	}
+
+	.tap:hover{
+		box-shadow: 0 .1rem .2rem 0 rgba(0, 0, 0, .05);
+	}
+
+	.tap:hover .heading{
+		color: #2f4bff;
+	}
+
+	.heading{
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 24px;
+		color: #101010;
+	}
+
+	.details *{
+		color: #777;
+		font-size: 13px;
+	}
+
+	.design-icon{
+/*		width: 30px;*/
+	}
+
+	.iconz{
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+/*		background-color: #;*/
+		padding: 5px;
+		float: left;
+	}
+
+	.iconz-p{
+/*		float: left;*/
+	}
+
+
+</style>
+
+
+<div class="grid grid-3 grid-2-lg grid-1-sm grid-container mt-5 mt-3-md">
+	{% for doc in docs %}
+		<div class="col">
+			<a href="{% url 'download' doc.id %}"><div class="mx-1 mx-0-sm px-0-sm px-1 mb-9 mb-5-lg mb-3-sm tap">
+				
+				<div class="iconz mr-3 mr-2-md">
+					<img class="design-icon img" src="{% static 'img/pdf1.svg' %}"> 
+				</div>
+
+				<p class="iconz-p d-float heading mb-1 float-left">{{doc.title|title}}</p>
+				<div class="flex details flex-wrap justify-between">
+					<p class="">{{doc.uploader}}</p>
+					<p class="">{{doc.date}}</p>
+				</div>
+			</div></a>
+		</div>
+	{% endfor %}
+</div>
+
+<script type="text/javascript">
+	let iconz = document.getElementsByClassName('iconz');
+	let designIcon = document.getElementsByClassName('design-icon');
+
+	let urlz = '{% static 'img' %}'
+
+	function RnImg(){
+		return Math.round(Math.random()*(13 - 1) + 1)
+	}
+
+	let colors = ['#ffac33', '#b1cc33', '#ffdc5d', '#a2ce8660', '#57beea70', '#ffeab5']
+
+	function colorIconz(){
+		return colors[Math.round(Math.random()*(5 - 0) + 0)]
+	}
+
+	for(let i = 0; i < designIcon.length; i++) {
+		designIcon[i].src = `${urlz}/${RnImg()}.svg`;
+		iconz[i].style.backgroundColor = colorIconz();
+	}
+
+</script>

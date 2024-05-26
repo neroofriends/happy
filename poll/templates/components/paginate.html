@@ -1,0 +1,45 @@
+<style type="text/css">
+	.nav-bn-1{
+		border-right: 3px solid #f5f5f5;
+		font-size: 20px;
+	}
+
+	.nav-bn-2{
+		border-left: 3px solid #f5f5f5;
+		font-size: 20px;
+	}
+
+	.nav-bn-2:hover, .nav-bn-1:hover{
+		background-color: #f9f9f9;
+		color: #777;
+	}
+
+	.off-nav-bn{
+		opacity: 50%;
+		background-color: #f9f9f9;
+	}
+
+</style>
+
+
+<div class="flex justify-center flex-wrap mt-4-md">
+	<div class="col-4 col-5-xl col-6-lg col-7-md col-9-sm">
+		<div class="bn bn-white flex align-items-center justify-between">
+			{% if docs.has_previous %}
+				<a href="?searcher={{ search }}&page={{ docs.previous_page_number }}"><p class="px-5 nav-bn-1 py-2"><i class="fas fa-chevron-left"></i></p></a>
+	        {% else %}
+				<p class="px-5 nav-bn-1 py-2 off-nav-bn"><i class="fas fa-chevron-left"></i></p>
+	        {% endif %}
+
+			<p class="px-3 flex-grow">Page {{docs.number}}</p>
+
+	        {% if docs.has_next %}
+				<a href="?searcher={{ search }}&page={{ docs.next_page_number }}"><p class="px-5 nav-bn-1 py-2"><i class="fas fa-chevron-right"></i></p></a>
+	        {% else %}
+				<p class="px-5 nav-bn-1 py-2 off-nav-bn"><i class="fas fa-chevron-right"></i></p>
+	        {% endif %}
+	    </div>
+
+	</div>
+	<p class="mt-9 mb-3 mb-0-sm col-10 px-2 text-center mono">Hope the ads on the website are of use. If not report issue on our media handles.</p>
+</div>

@@ -1,0 +1,104 @@
+{% load static %}
+
+<style type="text/css">
+	.nav-link{
+		color: #563d7c;
+	}
+
+	nav{
+		border-bottom: 1px solid #e5e5e5;
+		z-index: 3;
+		background-color: white;
+	}
+
+	nav *{
+		cursor: pointer;
+	}
+
+	nav .nav-link:hover{
+		background-color: #563d7c09;
+	}
+
+</style>
+
+
+<nav class="flex sticky-top justify-center align-items-center">
+	<div class="col-8 col-9-lg col-10-md px-4-md px-2-sm flex justify-between">
+		<div class="flex justify-start align-items-center col-10-md">
+			<div class="flex justify-between col-10-md align-items-center">
+				<a href="{% url 'index' %}"><p class="text-lg text-xl-1-sm bold-sm nav-link py-3 pr-4">Happy Library</p></a>
+				<p id="call-menu" class="d-none d-block-md px-2 py-1 text-xl-2"><i class="fas fa-bars"></i></p>
+			</div>
+			<div class="flex justify-start d-none-md">
+				<a href="{% url 'search' %}"><p class="nav-link px-3 py-3 text-md">Search notes</p></a>
+				<a><p class="nav-link px-3 py-3 text-md">Blog</p></a>
+				<a href="{% url 'upload' %}"><p class="nav-link px-3 py-3 text-md">Upload</p></a>
+				<a><p class="nav-link px-3 py-3 text-md">Terms</p></a>
+				<a><p class="nav-link px-3 py-3 text-md">Support</p></a>
+				<a><p class="nav-link px-3 py-3 text-md">More Services</p></a>
+			</div>
+		</div>
+		<div class="flex justify-end d-none-md">
+			<a><p class="nav-link px-3 py-3 text-md"><i class="fas fa-search"></i></p></a>
+			<a><p class="nav-link px-2 py-3 text-md"><i class="fab fa-x-twitter"></i></p></a>
+			<a><p class="nav-link px-2 py-3 text-md"><i class="fab fa-facebook-f"></i></p></a>
+			<a><p class="nav-link px-2 py-3 text-md">Login</p></a>
+		</div>
+	</div>
+</nav>
+
+
+<style type="text/css">
+	.sidebar{
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		width: 80vw;
+		background-color: white;
+		z-index: 3;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+	}
+
+</style>
+
+
+<div class="sidebar d-none" id="menu">
+	<div class="flex mx-2 justify-between px-1 sidebar-head">
+		<p class="py-5 text-xl-1 bold ">Happy Library</p>
+		<p class="py-5 text-xl-1" id="close-menu"><i class="fas fa-times"></i></p>
+	</div>
+	<div class="hr mx-2"></div>
+
+	<div class="mt-3">
+		<a href=""><p class="py-2 px-5 text-md">Blog</p></a>
+		<a href="{% url 'search' %}"><p class="py-2 px-5 text-md ">Search</p></a>
+		<a href="{% url 'upload' %}"><p class="py-2 px-5 text-md ">Upload</p></a>
+		<a href="#"><p class="py-2 px-5 text-md ">Terms</p></a>
+		<a href=""><p class="py-2 px-5 text-md ">Support</p></a>
+		<a href=""><p class="py-2 px-5 text-md ">More Services</p></a>
+	</div>
+
+	<div class="hr mt-4 mx-2 px-4">
+		<a href=""><p class="py-3"><i class="fab fa-x-twitter"></i></p></a>
+		<a href=""><p class="py-3"><i class="fab fa-facebook-f"></i></p></a>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	let closeMenu = document.getElementById('close-menu');
+	let callMenu = document.getElementById('call-menu');
+	let MenuBar = document.getElementById('menu');
+
+	closeMenu.onclick = () => {
+		MenuBar.classList.add('d-none');
+	}
+
+	callMenu.onclick = () => {
+		MenuBar.classList.remove('d-none');
+	}
+
+</script>

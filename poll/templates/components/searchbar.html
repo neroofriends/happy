@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<style type="text/css">
+	.search .input{
+		background-color: #fff;
+		border-radius: 50px;
+		padding-left: 35px;
+		z-index: 1;
+		border: 1px solid #3390e9;
+	}
+
+	.search .input-icons{
+		z-index: 2;
+	}
+
+	.search .input:focus{
+		border-color: transparent;
+		background-color: transparent;
+	}
+</style>
+
+<div class="flex justify-center" style="background-color: #f8f9fc;">
+	<div class="col-5 col-6-xl col-7-lg col-8-md col-9-sm">
+		<div class="py-3 py-2-sm">
+			<form class="search" method="GET" action="{% url 'search' %}">
+				{% csrf_token %}
+				<div class="flex pos-relative">
+					<span class="pos-absolute" style="top: 12px; right: 12px;">
+						<i class="fas fa-times"></i>
+					</span>
+					<span class="pos-absolute input-icons" style="top: 12px; left: 12px;">
+						<i class="fas fa-search"></i>
+					</span>
+					<input class="input flex-grow" type="text" name="searcher" placeholder="Search for pdfs and files...">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

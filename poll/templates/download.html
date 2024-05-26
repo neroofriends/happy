@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Happy Library - share global class knowledge</title>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" defer></script>
+
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fancy.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+	{% include 'components/navbar.html' with user='12' %}
+
+	<div class="flex flex-wrap justify-center">
+		<div class="col-7 col-10-md mb-3-md flex justify-end">
+			<div class="col-9 col-10-md">
+				<div class="pt-5 pb-10 pr-3 pl-8 pl-6-xl pl-4-lg pl-3-md px-3-sm">
+					<div class="flex flex-wrap">
+						<div class="col-6 col-10-md">
+							<div class="pr-2">
+								<p class="title mb-2">{{download.title|title}}</p>
+								<p class="mb-1"><span class="emp uppercase">Uploader By: </span> &nbsp;<a href="{% url 'search' %}?searcher={{download.uploader}}" class="emp emp2">{{download.uploader}}</a></p>
+								<p class="mb-5"><span class="emp uppercase">Date: </span> &nbsp;<span class="emp emp2">{{download.date}}</span></p>
+
+								<p class="d-none" id="tags">{{download.tags}}</p>
+
+								<div class="tag-space flex justify-start flex-wrap" id="tag-case"></div>
+
+								<a href="{{download.address}}" target="_blank"><p class="bn mt-4 bn-link"><i class="bi bi-download"></i> Download Notes</p></a>
+							</div>
+						</div>
+						<div class="col-4 h-auto round-md mt-2-md" style="background-color: #f8f9fc;">
+							<div class="p-7 p-5-lg p-2-sm flex justify-center h-auto h-max-content-md">
+								<img src="{% static 'img/1.svg' %}" class="img img-download">
+							</div>
+						</div>
+					</div>
+
+					<div class="hr mt-3"></div>
+
+					<div class="related mt-2">
+						<p class="mb-2 text-xl-4 title">Related notes</p>
+
+						{%include 'components/listview.html' %}
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="col-3 col-10-md mb-3-md"></div>
+
+	</div>
+
+
+	<script type="text/javascript">
+		let tag = document.getElementById('tags')
+		let tagCase = document.getElementById('tag-case')
+
+		let tags = tag.innerText.split(',');
+
+		let searchman = '{% url "search" %}'
+
+		let tag_code = ''
+
+		for(let i = 0; i < tags.length; i++){
+			tag_code += `<a href="${searchman}?searcher=${tags[i]}"><p class="mr-2 mb-2">${tags[i]}</p></a>`
+		}
+
+		tagCase.innerHTML = tag_code;
+
+	</script>
+
+
+</body>
+</html>
